@@ -1,0 +1,29 @@
+[
+    {
+        "URI": "http://schema.sap.com/ABAPTable/BSEG",
+        "type": "ABAPTable",
+        "name": "",
+        "description": "",
+        "semanticKeys": [
+            "???"
+        ]
+    },
+    {
+        "URI": "http://schema.sap.com/ABAPTable/T001",
+        "type": "ABAPTable",
+        "name": "",
+        "description": "",
+        "semanticKeys": [
+            "???"
+        ]
+    },
+    {
+        "URI": "http://schema.sap.com/ABAPTable/T014",
+        "type": "ABAPTable",
+        "name": "",
+        "description": "",
+        "semanticKeys": [
+            "???"
+        ]
+    }
+]
