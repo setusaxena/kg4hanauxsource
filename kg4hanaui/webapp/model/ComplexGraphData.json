@@ -1,0 +1,1017 @@
+[{
+	"URI": "I_OPERATIONALACCTGDOCITEM",
+	"type": "CDSView",
+	"name": "I_OPERATIONALACCTGDOCITEM",
+	"connectionToParent": "join",
+	"parent": null,
+	"isLeaf": false,
+	"parentIsAssociation": false
+}, {
+	"URI": "P_BSEG_COM",
+	"type": "CDSView",
+	"name": "P_BSEG_COM",
+	"connectionToParent": "join",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": false
+}, {
+	"URI": "P_BSEG_COM1",
+	"type": "CDSView",
+	"name": "P_BSEG_COM1",
+	"connectionToParent": "join",
+	"parent": "P_BSEG_COM",
+	"isLeaf": false,
+	"parentIsAssociation": false
+}, {
+	"URI": "UNDEFINED",
+	"type": "CDSView",
+	"name": "UNDEFINED",
+	"connectionToParent": "join",
+	"parent": "P_BSEG_COM1",
+	"isLeaf": true,
+	"parentIsAssociation": false
+}, {
+	"URI": "I_ACCOUNTINGDOCUMENT",
+	"type": "CDSView",
+	"name": "I_ACCOUNTINGDOCUMENT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COMPANYCODE",
+	"type": "CDSView",
+	"name": "I_COMPANYCODE",
+	"connectionToParent": "association",
+	"parent": "I_ACCOUNTINGDOCUMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COMPANYCODEHIERNODE",
+	"type": "CDSView",
+	"name": "I_COMPANYCODEHIERNODE",
+	"connectionToParent": "association",
+	"parent": "I_COMPANYCODE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_JOURNALENTRY",
+	"type": "CDSView",
+	"name": "I_JOURNALENTRY",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ADDLLEDGEROPLACCTGDOCITEM",
+	"type": "CDSView",
+	"name": "I_ADDLLEDGEROPLACCTGDOCITEM",
+	"connectionToParent": "association",
+	"parent": "I_JOURNALENTRY",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_JOURNALENTRYITEM",
+	"type": "CDSView",
+	"name": "I_JOURNALENTRYITEM",
+	"connectionToParent": "association",
+	"parent": "I_ADDLLEDGEROPLACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ONETIMEACCOUNTBP",
+	"type": "CDSView",
+	"name": "I_ONETIMEACCOUNTBP",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CHARTOFACCOUNTS",
+	"type": "CDSView",
+	"name": "I_CHARTOFACCOUNTS",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CHARTOFACCOUNTSTEXT",
+	"type": "CDSView",
+	"name": "I_CHARTOFACCOUNTSTEXT",
+	"connectionToParent": "association",
+	"parent": "I_CHARTOFACCOUNTS",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GLACCOUNTINCHARTOFACCOUNTS",
+	"type": "CDSView",
+	"name": "I_GLACCOUNTINCHARTOFACCOUNTS",
+	"connectionToParent": "association",
+	"parent": "I_CHARTOFACCOUNTSTEXT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FISCALYEARFORCOMPANYCODE",
+	"type": "CDSView",
+	"name": "I_FISCALYEARFORCOMPANYCODE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_POSTINGKEY",
+	"type": "CDSView",
+	"name": "I_POSTINGKEY",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_POSTINGKEYT",
+	"type": "CDSView",
+	"name": "I_POSTINGKEYT",
+	"connectionToParent": "association",
+	"parent": "I_POSTINGKEY",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_POSTINGKEYTEXT",
+	"type": "CDSView",
+	"name": "I_POSTINGKEYTEXT",
+	"connectionToParent": "association",
+	"parent": "I_POSTINGKEYT",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FINANCIALACCOUNTTYPE",
+	"type": "CDSView",
+	"name": "I_FINANCIALACCOUNTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FINANCIALACCOUNTTYPETEXT",
+	"type": "CDSView",
+	"name": "I_FINANCIALACCOUNTTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_FINANCIALACCOUNTTYPE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SPECIALGLCODE",
+	"type": "CDSView",
+	"name": "I_SPECIALGLCODE",
+	"connectionToParent": "association",
+	"parent": "I_FINANCIALACCOUNTTYPETEXT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_DEBITCREDITCODE",
+	"type": "CDSView",
+	"name": "I_DEBITCREDITCODE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_DEBITCREDITCODETEXT",
+	"type": "CDSView",
+	"name": "I_DEBITCREDITCODETEXT",
+	"connectionToParent": "association",
+	"parent": "I_DEBITCREDITCODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUSINESSAREA",
+	"type": "CDSView",
+	"name": "I_BUSINESSAREA",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUSINESSAREAHIERNODE",
+	"type": "CDSView",
+	"name": "I_BUSINESSAREAHIERNODE",
+	"connectionToParent": "association",
+	"parent": "I_BUSINESSAREA",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUSINESSAREATEXT",
+	"type": "CDSView",
+	"name": "I_BUSINESSAREATEXT",
+	"connectionToParent": "association",
+	"parent": "I_BUSINESSAREAHIERNODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_TAXCODE",
+	"type": "CDSView",
+	"name": "I_TAXCODE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_TAXCODETEXT",
+	"type": "CDSView",
+	"name": "I_TAXCODETEXT",
+	"connectionToParent": "association",
+	"parent": "I_TAXCODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COUNTRY",
+	"type": "CDSView",
+	"name": "I_COUNTRY",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COUNTRYTEXT",
+	"type": "CDSView",
+	"name": "I_COUNTRYTEXT",
+	"connectionToParent": "association",
+	"parent": "I_COUNTRY",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_TAXTYPE",
+	"type": "CDSView",
+	"name": "I_TAXTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_TAXTYPETEXT",
+	"type": "CDSView",
+	"name": "I_TAXTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_TAXTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FINANCIALTRANSACTIONTYPE",
+	"type": "CDSView",
+	"name": "I_FINANCIALTRANSACTIONTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FINANCIALTRANSACTIONTYPET",
+	"type": "CDSView",
+	"name": "I_FINANCIALTRANSACTIONTYPET",
+	"connectionToParent": "association",
+	"parent": "I_FINANCIALTRANSACTIONTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUSINESSPROCESS",
+	"type": "CDSView",
+	"name": "I_BUSINESSPROCESS",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUSINESSPROCESSTEXT",
+	"type": "CDSView",
+	"name": "I_BUSINESSPROCESSTEXT",
+	"connectionToParent": "association",
+	"parent": "I_BUSINESSPROCESS",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CONTROLLINGAREA",
+	"type": "CDSView",
+	"name": "I_CONTROLLINGAREA",
+	"connectionToParent": "association",
+	"parent": "I_BUSINESSPROCESSTEXT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTCENTER",
+	"type": "CDSView",
+	"name": "I_COSTCENTER",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_COSTCENTER",
+	"type": "CDSView",
+	"name": "E_COSTCENTER",
+	"connectionToParent": "association",
+	"parent": "I_COSTCENTER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTCENTERHIERARCHYNODE",
+	"type": "CDSView",
+	"name": "I_COSTCENTERHIERARCHYNODE",
+	"connectionToParent": "association",
+	"parent": "E_COSTCENTER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_INTERNALORDER",
+	"type": "CDSView",
+	"name": "I_INTERNALORDER",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_LOGISTICSORDER",
+	"type": "CDSView",
+	"name": "E_LOGISTICSORDER",
+	"connectionToParent": "association",
+	"parent": "I_INTERNALORDER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ORDER",
+	"type": "CDSView",
+	"name": "I_ORDER",
+	"connectionToParent": "association",
+	"parent": "E_LOGISTICSORDER",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SALESDOCUMENT",
+	"type": "CDSView",
+	"name": "I_SALESDOCUMENT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_SALESDOCUMENTBASIC",
+	"type": "CDSView",
+	"name": "E_SALESDOCUMENTBASIC",
+	"connectionToParent": "association",
+	"parent": "I_SALESDOCUMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SALESDOCUMENTBILLINGPLAN",
+	"type": "CDSView",
+	"name": "I_SALESDOCUMENTBILLINGPLAN",
+	"connectionToParent": "association",
+	"parent": "E_SALESDOCUMENTBASIC",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SALESDOCUMENTITEM",
+	"type": "CDSView",
+	"name": "I_SALESDOCUMENTITEM",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_SALESDOCUMENTITEMBASIC",
+	"type": "CDSView",
+	"name": "E_SALESDOCUMENTITEMBASIC",
+	"connectionToParent": "association",
+	"parent": "I_SALESDOCUMENTITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SALESDOCITEMBILLINGPLAN",
+	"type": "CDSView",
+	"name": "I_SALESDOCITEMBILLINGPLAN",
+	"connectionToParent": "association",
+	"parent": "E_SALESDOCUMENTITEMBASIC",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SERVICEDOCUMENTTYPE",
+	"type": "CDSView",
+	"name": "I_SERVICEDOCUMENTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SERVICEDOCUMENTTYPETEXT",
+	"type": "CDSView",
+	"name": "I_SERVICEDOCUMENTTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_SERVICEDOCUMENTTYPE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SRVCDOCBYDOCUMENTTYPE",
+	"type": "CDSView",
+	"name": "I_SRVCDOCBYDOCUMENTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_SERVICEDOCUMENTTYPETEXT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SRVCDOCITEMBYDOCUMENTTYPE",
+	"type": "CDSView",
+	"name": "I_SRVCDOCITEMBYDOCUMENTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_SERVICEDOCUMENTITEM",
+	"type": "CDSView",
+	"name": "E_SERVICEDOCUMENTITEM",
+	"connectionToParent": "association",
+	"parent": "I_SRVCDOCITEMBYDOCUMENTTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FIXEDASSET",
+	"type": "CDSView",
+	"name": "I_FIXEDASSET",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_FIXEDASSET",
+	"type": "CDSView",
+	"name": "E_FIXEDASSET",
+	"connectionToParent": "association",
+	"parent": "I_FIXEDASSET",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ASSETVALUATIONFORLEDGER",
+	"type": "CDSView",
+	"name": "I_ASSETVALUATIONFORLEDGER",
+	"connectionToParent": "association",
+	"parent": "E_FIXEDASSET",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ASSETTRANSACTIONTYPE",
+	"type": "CDSView",
+	"name": "I_ASSETTRANSACTIONTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ASSETTRANSACTIONTYPETEXT",
+	"type": "CDSView",
+	"name": "I_ASSETTRANSACTIONTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_ASSETTRANSACTIONTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_EMPLOYMENT",
+	"type": "CDSView",
+	"name": "I_EMPLOYMENT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_EMPLOYORGDET",
+	"type": "CDSView",
+	"name": "I_EMPLOYORGDET",
+	"connectionToParent": "association",
+	"parent": "I_EMPLOYMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_EMPLOYSTATDET",
+	"type": "CDSView",
+	"name": "I_EMPLOYSTATDET",
+	"connectionToParent": "association",
+	"parent": "I_EMPLOYORGDET",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CUSTOMER",
+	"type": "CDSView",
+	"name": "I_CUSTOMER",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_CUSTOMER",
+	"type": "CDSView",
+	"name": "E_CUSTOMER",
+	"connectionToParent": "association",
+	"parent": "I_CUSTOMER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CONTACTPERSON",
+	"type": "CDSView",
+	"name": "I_CONTACTPERSON",
+	"connectionToParent": "association",
+	"parent": "E_CUSTOMER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SUPLRBANKDETAILSBYINTID",
+	"type": "CDSView",
+	"name": "I_SUPLRBANKDETAILSBYINTID",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SUPPLIER",
+	"type": "CDSView",
+	"name": "I_SUPPLIER",
+	"connectionToParent": "association",
+	"parent": "I_SUPLRBANKDETAILSBYINTID",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_SUPPLIER",
+	"type": "CDSView",
+	"name": "E_SUPPLIER",
+	"connectionToParent": "association",
+	"parent": "I_SUPPLIER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_HOUSEBANKACCOUNT",
+	"type": "CDSView",
+	"name": "I_HOUSEBANKACCOUNT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_HOUSEBANKACCOUNTTEXT",
+	"type": "CDSView",
+	"name": "I_HOUSEBANKACCOUNTTEXT",
+	"connectionToParent": "association",
+	"parent": "I_HOUSEBANKACCOUNT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_HOUSEBANK",
+	"type": "CDSView",
+	"name": "I_HOUSEBANK",
+	"connectionToParent": "association",
+	"parent": "I_HOUSEBANKACCOUNTTEXT",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_MATERIAL",
+	"type": "CDSView",
+	"name": "I_MATERIAL",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_MATERIALPLANT",
+	"type": "CDSView",
+	"name": "I_MATERIALPLANT",
+	"connectionToParent": "association",
+	"parent": "I_MATERIAL",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_MATERIALTEXT",
+	"type": "CDSView",
+	"name": "I_MATERIALTEXT",
+	"connectionToParent": "association",
+	"parent": "I_MATERIALPLANT",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PRODUCT",
+	"type": "CDSView",
+	"name": "I_PRODUCT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CLFNOBJECTCHARCVALFORKEYDATE",
+	"type": "CDSView",
+	"name": "I_CLFNOBJECTCHARCVALFORKEYDATE",
+	"connectionToParent": "association",
+	"parent": "I_PRODUCT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CLFNOBJECTCLASSFORKEYDATE",
+	"type": "CDSView",
+	"name": "I_CLFNOBJECTCLASSFORKEYDATE",
+	"connectionToParent": "association",
+	"parent": "I_CLFNOBJECTCHARCVALFORKEYDATE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PLANT",
+	"type": "CDSView",
+	"name": "I_PLANT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_MRPAREA",
+	"type": "CDSView",
+	"name": "I_MRPAREA",
+	"connectionToParent": "association",
+	"parent": "I_PLANT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_STORAGELOCATION",
+	"type": "CDSView",
+	"name": "I_STORAGELOCATION",
+	"connectionToParent": "association",
+	"parent": "I_MRPAREA",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PURCHASINGDOCUMENT",
+	"type": "CDSView",
+	"name": "I_PURCHASINGDOCUMENT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_PURCHASINGDOCUMENT",
+	"type": "CDSView",
+	"name": "E_PURCHASINGDOCUMENT",
+	"connectionToParent": "association",
+	"parent": "I_PURCHASINGDOCUMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PURCHASINGDOCUMENTITEM",
+	"type": "CDSView",
+	"name": "I_PURCHASINGDOCUMENTITEM",
+	"connectionToParent": "association",
+	"parent": "E_PURCHASINGDOCUMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PURREQVALUATIONAREA",
+	"type": "CDSView",
+	"name": "I_PURREQVALUATIONAREA",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_INVENTORYVALUATIONTYPE",
+	"type": "CDSView",
+	"name": "I_INVENTORYVALUATIONTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PAYMENTDIFFERENCEREASON",
+	"type": "CDSView",
+	"name": "I_PAYMENTDIFFERENCEREASON",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PAYMENTDIFFERENCEREASONT",
+	"type": "CDSView",
+	"name": "I_PAYMENTDIFFERENCEREASONT",
+	"connectionToParent": "association",
+	"parent": "I_PAYMENTDIFFERENCEREASON",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PROFITCENTER",
+	"type": "CDSView",
+	"name": "I_PROFITCENTER",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_PROFITCENTER",
+	"type": "CDSView",
+	"name": "E_PROFITCENTER",
+	"connectionToParent": "association",
+	"parent": "I_PROFITCENTER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PRFTCTRCOMPANYCODEASSIGNMENT",
+	"type": "CDSView",
+	"name": "I_PRFTCTRCOMPANYCODEASSIGNMENT",
+	"connectionToParent": "association",
+	"parent": "E_PROFITCENTER",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PROJECTNETWORK",
+	"type": "CDSView",
+	"name": "I_PROJECTNETWORK",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_WBSELEMENTBASICDATA",
+	"type": "CDSView",
+	"name": "I_WBSELEMENTBASICDATA",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_WBSELEMENTBYINTERNALKEY",
+	"type": "CDSView",
+	"name": "I_WBSELEMENTBYINTERNALKEY",
+	"connectionToParent": "association",
+	"parent": "I_WBSELEMENTBASICDATA",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTORIGINGROUP",
+	"type": "CDSView",
+	"name": "I_COSTORIGINGROUP",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTORIGINGROUPTEXT",
+	"type": "CDSView",
+	"name": "I_COSTORIGINGROUPTEXT",
+	"connectionToParent": "association",
+	"parent": "I_COSTORIGINGROUP",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTCENTERACTIVITYTYPE",
+	"type": "CDSView",
+	"name": "I_COSTCENTERACTIVITYTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTCENTERACTIVITYTYPETEXT",
+	"type": "CDSView",
+	"name": "I_COSTCENTERACTIVITYTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_COSTCENTERACTIVITYTYPE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_COSTCTRACTIVITYTYPEHIERNODE",
+	"type": "CDSView",
+	"name": "I_COSTCTRACTIVITYTYPEHIERNODE",
+	"connectionToParent": "association",
+	"parent": "I_COSTCENTERACTIVITYTYPETEXT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GRANT",
+	"type": "CDSView",
+	"name": "I_GRANT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_GRANT",
+	"type": "CDSView",
+	"name": "E_GRANT",
+	"connectionToParent": "association",
+	"parent": "I_GRANT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GRANTHIERARCHYNODE",
+	"type": "CDSView",
+	"name": "I_GRANTHIERARCHYNODE",
+	"connectionToParent": "association",
+	"parent": "E_GRANT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FUNCTIONALAREA",
+	"type": "CDSView",
+	"name": "I_FUNCTIONALAREA",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FUNCTIONALAREAHIERNODE",
+	"type": "CDSView",
+	"name": "I_FUNCTIONALAREAHIERNODE",
+	"connectionToParent": "association",
+	"parent": "I_FUNCTIONALAREA",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FUNCTIONALAREATEXT",
+	"type": "CDSView",
+	"name": "I_FUNCTIONALAREATEXT",
+	"connectionToParent": "association",
+	"parent": "I_FUNCTIONALAREAHIERNODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SEGMENT",
+	"type": "CDSView",
+	"name": "I_SEGMENT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SEGMENTHIERNODE",
+	"type": "CDSView",
+	"name": "I_SEGMENTHIERNODE",
+	"connectionToParent": "association",
+	"parent": "I_SEGMENT",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_SEGMENTTEXT",
+	"type": "CDSView",
+	"name": "I_SEGMENTTEXT",
+	"connectionToParent": "association",
+	"parent": "I_SEGMENTHIERNODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_REFERENCEDOCUMENTTYPE",
+	"type": "CDSView",
+	"name": "I_REFERENCEDOCUMENTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_REFERENCEDOCUMENTTYPETEXT",
+	"type": "CDSView",
+	"name": "I_REFERENCEDOCUMENTTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_REFERENCEDOCUMENTTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FISCALYEARPERIODFORCMPNYCODE",
+	"type": "CDSView",
+	"name": "I_FISCALYEARPERIODFORCMPNYCODE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_FISCALPERIODFORCOCODETEXT",
+	"type": "CDSView",
+	"name": "I_FISCALPERIODFORCOCODETEXT",
+	"connectionToParent": "association",
+	"parent": "I_FISCALYEARPERIODFORCMPNYCODE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ACCOUNTINGDOCUMENTCATEGORY",
+	"type": "CDSView",
+	"name": "I_ACCOUNTINGDOCUMENTCATEGORY",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ACCOUNTINGDOCUMENTCATEGORYT",
+	"type": "CDSView",
+	"name": "I_ACCOUNTINGDOCUMENTCATEGORYT",
+	"connectionToParent": "association",
+	"parent": "I_ACCOUNTINGDOCUMENTCATEGORY",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ACCOUNTINGDOCUMENTTYPE",
+	"type": "CDSView",
+	"name": "I_ACCOUNTINGDOCUMENTTYPE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_ACCOUNTINGDOCUMENTTYPETEXT",
+	"type": "CDSView",
+	"name": "I_ACCOUNTINGDOCUMENTTYPETEXT",
+	"connectionToParent": "association",
+	"parent": "I_ACCOUNTINGDOCUMENTTYPE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUDGETPERIOD",
+	"type": "CDSView",
+	"name": "I_BUDGETPERIOD",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "E_BUDGETPERIOD",
+	"type": "CDSView",
+	"name": "E_BUDGETPERIOD",
+	"connectionToParent": "association",
+	"parent": "I_BUDGETPERIOD",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_BUDGETPERIODTEXT",
+	"type": "CDSView",
+	"name": "I_BUDGETPERIODTEXT",
+	"connectionToParent": "association",
+	"parent": "E_BUDGETPERIOD",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GLACCOUNTINCOMPANYCODE",
+	"type": "CDSView",
+	"name": "I_GLACCOUNTINCOMPANYCODE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GLACCTINCOCODEIMPLEMENTSTAT",
+	"type": "CDSView",
+	"name": "I_GLACCTINCOCODEIMPLEMENTSTAT",
+	"connectionToParent": "association",
+	"parent": "I_GLACCOUNTINCOMPANYCODE",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_GLACCOUNTTEXTINCOMPANYCODE",
+	"type": "CDSView",
+	"name": "I_GLACCOUNTTEXTINCOMPANYCODE",
+	"connectionToParent": "association",
+	"parent": "I_GLACCTINCOCODEIMPLEMENTSTAT",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_PUBSECBUDGETACCOUNT",
+	"type": "CDSView",
+	"name": "I_PUBSECBUDGETACCOUNT",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CURRENCY",
+	"type": "CDSView",
+	"name": "I_CURRENCY",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_CURRENCYTEXT",
+	"type": "CDSView",
+	"name": "I_CURRENCYTEXT",
+	"connectionToParent": "association",
+	"parent": "I_CURRENCY",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_UNITOFMEASURE",
+	"type": "CDSView",
+	"name": "I_UNITOFMEASURE",
+	"connectionToParent": "association",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": false,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_UNITOFMEASURETEXT",
+	"type": "CDSView",
+	"name": "I_UNITOFMEASURETEXT",
+	"connectionToParent": "association",
+	"parent": "I_UNITOFMEASURE",
+	"isLeaf": true,
+	"parentIsAssociation": true
+}, {
+	"URI": "I_OPERATIONALACCTGDOCITEM",
+	"type": "CDSView",
+	"name": "I_OPERATIONALACCTGDOCITEM",
+	"connectionToParent": "join",
+	"parent": "I_OPERATIONALACCTGDOCITEM",
+	"isLeaf": true,
+	"parentIsAssociation": false
+}]

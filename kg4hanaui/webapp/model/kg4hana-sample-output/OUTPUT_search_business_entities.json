@@ -1,0 +1,11 @@
+[
+    {
+        "URI": "http://schema.sap.com/CDSView/I_OPERATIONALACCTGDOCITEM",
+        "type": "http://schema.sap.com/ns/cds#CDSView",
+        "name": "I_OperationalAcctgDocItem",
+        "description": "",
+        "semanticKeys": [
+            "???"
+        ]
+    }
+]
