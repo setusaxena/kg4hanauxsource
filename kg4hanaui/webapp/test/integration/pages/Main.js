@@ -3,22 +3,21 @@ sap.ui.define([
 ], function (Opa5) {
 	"use strict";
 	var sViewName = "Main";
-	
 	Opa5.createPageObjects({
-		onTheViewPage: {
+		onTheAppPage: {
 
 			actions: {},
 
 			assertions: {
 
-				iShouldSeeThePageView: function () {
+				iShouldSeeTheApp: function () {
 					return this.waitFor({
-						id: "page",
+						id: "app",
 						viewName: sViewName,
 						success: function () {
-							Opa5.assert.ok(true, "The " + sViewName + " view is displayed");
+							Opa5.assert.ok(true, "The Main view is displayed");
 						},
-						errorMessage: "Did not find the " + sViewName + " view"
+						errorMessage: "Did not find the Main view"
 					});
 				}
 			}

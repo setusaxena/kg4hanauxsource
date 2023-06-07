@@ -1,7 +1,102 @@
-<mvc:View controllerName="com.sap.kg4hana.kg4hanaui.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+<mvc:View xmlns:uxap="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m"
+	controllerName="com.sap.kg4hana.kg4hanaui.controller.Main" displayBlock="true">
+	<App id="app">
+		<pages>
+			<Page id="page" title="{i18n>title}">
+				<content>
+					<!--<Button id="showGraph" text="Graph" press="onNavGraphPress"/>y-->
+					<!--<Button id="showSQL" text="SQL" press="onNavSQLPress"/>-->
+					<!--<Button id="showCDS" text="CDS" press="onNavCDSPress"/>-->
+					<uxap:ObjectPageLayout id="ObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
+						<uxap:headerTitle>
+							<uxap:ObjectPageDynamicHeaderTitle>
+								<uxap:heading>
+									<HBox>
+										<Input class="sapUiTinyMarginBottom" width="20rem" id="inpSearchByName" submit="handleSearchByName" placeholder="{i18n>SearchByName}"
+											showSuggestion="true" autocomplete="false" change="handleInputChange"/>
+										<VBox width="1rem"></VBox>
+										<Button text="{i18n>Search}" press="onSearchPress"></Button>
+									</HBox>
+								</uxap:heading>
+							</uxap:ObjectPageDynamicHeaderTitle>
+						</uxap:headerTitle>
+						<uxap:sections>
+							<uxap:ObjectPageSection showTitle="false" visible="{= !!${VisiblityModel>/noEntity} }">
+								<uxap:subSections>
+									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
+										<MessagePage showHeader="false" icon="sap-icon://detail-view"
+											text="{= ${VisiblityModel>/noEntity} ? ${i18n>NotFound} : ${i18n>SearchByName} }" description=""/>
+									</uxap:ObjectPageSubSection>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+							<uxap:ObjectPageSection showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
+								<uxap:subSections>
+									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
+										<table:Table id="table" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
+											rowSelectionChange="onEntityRowSelectionChange" filter="filterPrice" ariaLabelledBy="title">
+											<table:extension>
+												<OverflowToolbar style="Clear">
+													<SearchField placeholder="Filter" value="{ui>/globalFilter}" search="filterGlobally" width="15rem"/>
+													<ToolbarSeparator/>
+													<CheckBox enabled="false" id="chckIncludeAssociation" select="pressIncludeAssociation" selected="true"></CheckBox>
+													<Title id="title" text="Include Associations"/>
+													<ToolbarSpacer/>
+													<ToggleButton icon="sap-icon://complete" tooltip="Show available products only" press="toggleAvailabilityFilter"
+														pressed="{ui>/availabilityFilterOn}"/>
+													<ToggleButton icon="sap-icon://grid" tooltip="Enable / Disable Cell Filter Functionality" pressed="{ui>/cellFilterOn}"/>
+													<Button icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters"/>
+												</OverflowToolbar>
+											</table:extension>
+											<table:columns>
+												<table:Column width="15rem" filterProperty="Category" defaultFilterOperator="StartsWith">
+													<Label text="Entity Type"/>
+													<table:template>
+														<Text text="{EntityModel>type}" wrapping="false"/>
+													</table:template>
+												</table:Column>
+												<table:Column width="15rem" filterProperty="Name">
+													<Label text="Entity Name"/>
+													<table:template>
+														<Text text="{EntityModel>name}" wrapping="false"/>
+													</table:template>
+												</table:Column>
+												<table:Column width="30rem">
+													<Label text="Semantic Keys"/>
+													<table:template>
+														<Text text="{EntityModel>semanticKeys}"/>
+													</table:template>
+												</table:Column>
+												<table:Column id="availability" width="11rem" filterProperty="Available" showFilterMenuEntry="false" defaultFilterOperator="EQ"
+													filterType="sap.ui.model.type.Boolean">
+													<Label text="Actions"/>
+													<table:template>
+														<HBox>
+															<Button icon="sap-icon://database" tooltip="{i18n>ShowBaseTables}" type="Emphasized"></Button>
+															<VBox width="5px"/>
+															<Button icon="sap-icon://org-chart" tooltip="{i18n>ShowHierarchy}" press="onNavGraphPress" type="Emphasized"></Button>
+															<VBox width="5px"/>
+															<Button icon="sap-icon://information" tooltip="{i18n>GetInformation}" press="onNavInfoPress" type="Emphasized"></Button>
+															<VBox width="5px"/>
+															<Button icon="sap-icon://feeder-arrow" tooltip="{i18n>GetChildren}"></Button>
+														</HBox>
+													</table:template>
+												</table:Column>
+											</table:columns>
+											<table:footer>
+												<OverflowToolbar id="infobar">
+													<Label text="Selected Views"/>
+													<MultiInput id="multiInputEntity" width="70%" showValueHelp="false"/>
+													<Button text="{i18n>GenerateSQL}" id="generateSQL" press="onNavSQLPress" enabled="false" icon="sap-icon://source-code"></Button>
+												</OverflowToolbar>
+											</table:footer>
+										</table:Table>
+									</uxap:ObjectPageSubSection>
+								</uxap:subSections>
+							</uxap:ObjectPageSection>
+						</uxap:sections>
+					</uxap:ObjectPageLayout>
+				</content>
+			</Page>
+		</pages>
+	</App>
 </mvc:View>

@@ -1,7 +1,12 @@
 /* global QUnit */
+QUnit.config.autostart = false;
 
-sap.ui.require(["com/sap/kg4hana/kg4hanaui/test/integration/AllJourneys"
-], function () {
-	QUnit.config.autostart = false;
-	QUnit.start();
+sap.ui.getCore().attachInit(function () {
+	"use strict";
+
+	sap.ui.require([
+		"com/sap/kg4hana/kg4hanaui/test/integration/AllJourneys"
+	], function () {
+		QUnit.start();
+	});
 });

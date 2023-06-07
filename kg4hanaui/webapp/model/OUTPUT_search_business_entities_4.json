@@ -1,0 +1,7 @@
+[{
+	"URI": "http://schema.sap.com/CDSView/I_OPERATIONALACCTGDOCITEM",
+	"type": "CDSView",
+	"name": "I_OperationalAcctgDocItem",
+	"description": "Operational Accounting Document Item",
+	"semanticKeys": []
+}]

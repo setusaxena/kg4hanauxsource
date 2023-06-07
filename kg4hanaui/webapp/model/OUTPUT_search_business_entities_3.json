@@ -1,0 +1,31 @@
+[{
+	"URI": "http://schema.sap.com/CDSView/I_PURCHASEORDERAPI01",
+	"type": "CDSView",
+	"name": "I_PurchaseOrderAPI01",
+	"description": "Purchase Order",
+	"semanticKeys": [
+		"PurchaseOrder"
+	]
+}, {
+	"URI": "http://schema.sap.com/CDSView/I_PURCHASEORDERITEMAPI01",
+	"type": "CDSView",
+	"name": "I_PurchaseOrderItemAPI01",
+	"description": "Purchase Order Item",
+	"semanticKeys": [
+		"PurchaseOrder"
+	]
+}, {
+	"URI": "http://schema.sap.com/ABAPTable/EKKO",
+	"type": "ABAPTable",
+	"name": "EKKO",
+	"description": "EKKO",
+	"semanticKeys": [
+		"PurchaseOrder"
+	]
+}, {
+	"URI": "http://schema.sap.com/ABAPTable/PURCHASEORDER",
+	"type": "ABAPTable",
+	"name": "PURCHASEORDER",
+	"description": "PURCHASEORDER",
+	"semanticKeys": []
+}]
