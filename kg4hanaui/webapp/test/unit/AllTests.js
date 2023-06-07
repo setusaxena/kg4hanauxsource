@@ -1,5 +1,5 @@
 sap.ui.define([
-	"comsapkg4hana/kg4hanaui/test/unit/controller/Main.controller"
+	"com/sap/kg4hana/kg4hanaui/test/unit/controller/Main.controller"
 ], function () {
 	"use strict";
 });
