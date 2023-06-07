@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"com/sap/kg4hana/kg4hanaui/controller/Main.controller"
+	"comsapkg4hana/kg4hanaui/controller/Main.controller"
 ], function (Controller) {
 	"use strict";
 
