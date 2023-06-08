@@ -29,7 +29,7 @@
 									</uxap:ObjectPageSubSection>
 								</uxap:subSections>
 							</uxap:ObjectPageSection>
-							<uxap:ObjectPageSection showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
+							<uxap:ObjectPageSection id="ObjPageSection" showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
 								<uxap:subSections>
 									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
 										<table:Table id="table" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"

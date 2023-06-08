@@ -11,9 +11,6 @@ server:
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
-          - path: /sap
-            url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
-            destination: POC_KG4HANA
           - path: /apiEndPoint
             destination: POC_KG4HANA
             url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com

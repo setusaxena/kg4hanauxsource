@@ -4,8 +4,8 @@
 	"name": "I_BankAccountOpeningRequest",
 	"description": "Bank Account Opening Request",
 	"semanticKeys": [
-		"BankAccountApplication"
-
+		"BankAccountApplication1",
+		"BankAccountApplication2"
 	]
 }, {
 	"URI": "http://schema.sap.com/ABAPTable/FCLM_BAM_BAOR",

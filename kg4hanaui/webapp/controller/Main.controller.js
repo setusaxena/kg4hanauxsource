@@ -49,31 +49,38 @@ sap.ui.define([
 			});
 		},
 
-		onSearchPress: function (sQuery) {
+		onSearchPress: function (oEvent) {
 
 			var oSearchInput = this.getView().byId("inpSearchByName").getValue();
 			if (oSearchInput) {
 				this.oVisiblityModel.setProperty("/selectedEntity", true);
 				this.oVisiblityModel.setProperty("/noEntity", false);
-
-				//Fetch JSON from the Data Manager Class.
-				var oEntityDataModel = this.oDataManager.onSearchArtifactsByName(oSearchInput);
-
 				//get the table reference
 				var oTable = this.getView().byId("table");
-				//set the dynamic JSON model to this table.
-				this.getView().setModel(oEntityDataModel, "EntityModel");
+				var oObjPageSection = this.getView().byId("ObjPageSection");
 
-				/*		this.getView().byId("inpSearchByName").setValue(oSearchInput);
+				var onQueryLookupSuccess = function (data) {
+					debugger;
+					if (Array.isArray(data) && data.length !== 0) {
+						debugger;
+						oObjPageSection.setTitle(this.getResourceBundle().getText("SearchResultsLabel", [data.length.toString(), oSearchInput]));
+					}
+					var oEntityDataModel = new sap.ui.model.json.JSONModel(data);
+					//set the dynamic JSON model to this table.
+					this.getView().setModel(oEntityDataModel, "EntityModel");
+					oTable.setEnableBusyIndicator(false);
+				}.bind(this);
 
-						var aFilters = [];
-						var filter = new Filter("name", FilterOperator.Contains, oSearchInput);
-						aFilters.push(filter);*/
+				var onQueryLookupError = function (errorText) {
+					MessageToast.show(errorText);
+					oTable.setEnableBusyIndicator(false);
+					oObjPageSection.setTitle(this.getResourceBundle().getText("SearchResultNotFound"));
+				}.bind(this);
 
-				// update list binding
-				//	var oList = this.getView().byId("table");
-				/*		var oBinding = oTable.getBinding("items");
-						oBinding.filter(aFilters, "Application");*/
+				oTable.setEnableBusyIndicator(true);
+				oObjPageSection.setTitle("");
+				//Fetch JSON from the Data Manager Class, to be handled in the Success callback or error callback.
+				this.oDataManager.onSearchArtifactsByName(oSearchInput, onQueryLookupSuccess, onQueryLookupError);
 
 			} else {
 				this.oVisiblityModel.setProperty("/selectedEntity", false);
@@ -82,7 +89,6 @@ sap.ui.define([
 		},
 
 		onEntityRowSelectionChange: function (oEvent) {
-			debugger;
 			var oTable = oEvent.getSource();
 			var bindedEntityList = oTable.getBinding().oList;
 			var clickedRowIndex = oEvent.getParameters().rowIndex;

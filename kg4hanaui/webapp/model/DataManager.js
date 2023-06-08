@@ -14,11 +14,37 @@ sap.ui.define([
 		/**
 		 *	Start of Search CDS Arctefacts by Query / Name
 		 **/
-		onSearchArtifactsByName: function (sQuery) {
-			return this._fetchSearchArtifactsByName(sQuery);
+		onSearchArtifactsByName: function (sQuery, successCallback, errorCallback) {
+			return this._fetchSearchArtifactsByName(sQuery, successCallback, errorCallback);
 		},
 
-		_fetchSearchArtifactsByName: function (sQuery) {
+		_fetchSearchArtifactsByName: function (sQuery, successCallback, errorCallback) {
+			debugger;
+
+			if (sQuery) {
+				$.ajax({
+					type: "GET",
+					url: "/apiEndPoint/entities?searchObject=" + sQuery,
+					dataType: 'json',
+					async: true,
+					success: function (data) {
+						debugger;
+						if (Array.isArray(data) && data.length === 0) {
+							errorCallback("NoRecordsFound");
+						}
+						else {
+							var transformedData = this._adapterFetchSearchArtifactsByName(data);
+							successCallback(transformedData);
+						}
+					}.bind(this),
+					error: function (e) {
+						debugger;
+						errorCallback("UnableToReadquery"); //Implement i18n later Please DO NOT put text hrere
+					}
+				});
+			} else {
+				errorCallback("NoInput");//Implement i18n later Please DO NOT put text hrere
+			}
 
 			if (sQuery === "I_OPERATIONALACCTGDOCITEM") {
 
@@ -41,6 +67,21 @@ sap.ui.define([
 
 				return jsonCDSModel;
 			}
+		},
+
+		_adapterFetchSearchArtifactsByName: function (inputArraRows) {
+			var outputArrayRows = [];
+			inputArraRows.forEach(function (row) {
+				if (row && row.semanticKeys && Array.isArray(row.semanticKeys)) {
+					var semanticKeysCollection = [];
+					row.semanticKeys.forEach(function (semanticKeyObj) {
+						semanticKeysCollection.push(semanticKeyObj.name);
+					});
+					row.semanticKeys = semanticKeysCollection.join(" , ");
+					outputArrayRows.push(row)
+				}
+			});
+			return outputArrayRows;
 		},
 		/**
 		 *	End of Search CDS Arctefacts by Query / Name
