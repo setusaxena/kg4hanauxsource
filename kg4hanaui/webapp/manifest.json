@@ -105,6 +105,16 @@
 				"pattern": "toInfo/{URI}",
 				"name": "info",
 				"target": "info"
+			},
+			{
+				"pattern": "toBaseTables/{URI}",
+				"name": "baseTables",
+				"target": "baseTables"
+			},
+			{
+				"pattern": "toChildTables/{URI}",
+				"name": "childTables",
+				"target": "childTables"
 			}],
 			"targets": {
 				"main": {
@@ -121,6 +131,14 @@
 				},
 				"info": {
 					"viewName": "Info",
+					"transition": "slide"
+				},
+				"baseTables": {
+					"viewName": "BaseTables",
+					"transition": "slide"
+				},
+				"childTables": {
+					"viewName": "ChildTables",
 					"transition": "slide"
 				}
 			}

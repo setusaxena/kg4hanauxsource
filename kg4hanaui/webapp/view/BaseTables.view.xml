@@ -1,13 +1,13 @@
 <mvc:View xmlns:uxap="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m"
-	controllerName="com.sap.kg4hana.kg4hanaui.controller.Main" displayBlock="true">
+	controllerName="com.sap.kg4hana.kg4hanaui.controller.BaseTables" displayBlock="true">
 	<App id="app">
 		<pages>
-			<Page id="page" title="{i18n>title}">
+			<Page id="baseTables" title="{i18n>title}">
 				<content>
 					<!--<Button id="showGraph" text="Graph" press="onNavGraphPress"/>y-->
 					<!--<Button id="showSQL" text="SQL" press="onNavSQLPress"/>-->
 					<!--<Button id="showCDS" text="CDS" press="onNavCDSPress"/>-->
-					<uxap:ObjectPageLayout id="ObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
+					<uxap:ObjectPageLayout id="baseTablesObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
 						<uxap:headerTitle>
 							<uxap:ObjectPageDynamicHeaderTitle>
 								<uxap:heading>
@@ -32,7 +32,7 @@
 							<uxap:ObjectPageSection id="ObjPageSection" showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
 								<uxap:subSections>
 									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
-										<table:Table id="table" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
+										<table:Table id="baseTable" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
 											rowSelectionChange="onEntityRowSelectionChange" filter="filterPrice" ariaLabelledBy="title">
 											<table:extension>
 												<OverflowToolbar style="Clear">
@@ -71,13 +71,13 @@
 													<Label text="Actions"/>
 													<table:template>
 														<HBox>
-															<Button icon="sap-icon://database" tooltip="{i18n>ShowBaseTables}" press="onNavBaseTablesPress" type="Emphasized"></Button>
+															<Button icon="sap-icon://database" tooltip="{i18n>ShowBaseTables}" type="Emphasized"></Button>
 															<VBox width="5px"/>
 															<Button icon="sap-icon://org-chart" tooltip="{i18n>ShowHierarchy}" press="onNavGraphPress" type="Emphasized"></Button>
 															<VBox width="5px"/>
 															<Button icon="sap-icon://information" tooltip="{i18n>GetInformation}" press="onNavInfoPress" type="Emphasized"></Button>
 															<VBox width="5px"/>
-															<Button icon="sap-icon://feeder-arrow" tooltip="{i18n>GetChildren}" press="onNavChildTablesPress" ></Button>
+															<Button icon="sap-icon://feeder-arrow" tooltip="{i18n>GetChildren}"></Button>
 														</HBox>
 													</table:template>
 												</table:Column>

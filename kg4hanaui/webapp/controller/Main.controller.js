@@ -48,7 +48,26 @@ sap.ui.define([
 				URI: URI
 			});
 		},
+		 
+		onNavBaseTablesPress: function (oEvent) {
+			//getRouter as defined in BaseController and then navTo route;
+			//	var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+			//	var objRowURI = formatter.shortenURI(URI);
 
+			this.getRouter().navTo("baseTables", {
+				URI: URI
+			});
+		},
+		onNavChildTablesPress: function (oEvent) {
+			//getRouter as defined in BaseController and then navTo route;
+			//	var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+			//	var objRowURI = formatter.shortenURI(URI);
+
+			this.getRouter().navTo("toChildTables", {
+				URI: URI
+			});
+		},
+		
 		onSearchPress: function (oEvent) {
 
 			var oSearchInput = this.getView().byId("inpSearchByName").getValue();
