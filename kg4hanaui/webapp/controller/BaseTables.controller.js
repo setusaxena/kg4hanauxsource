@@ -8,7 +8,7 @@ sap.ui.define([
 		onInit: function () {
 			this.oDataManager = this.getDataManager();
 			//object match handler
-			this.getRouter().getRoute("info").attachPatternMatched(this._onObjectMatched, this);
+			this.getRouter().getRoute("baseTables").attachPatternMatched(this._onObjectMatched, this);
 		},
 
 		_onObjectMatched: function (oEvent) {
@@ -18,8 +18,32 @@ sap.ui.define([
 		},
 
 		_intializeObjectPage: function (sURI) {
-			var oObjectInfoModel = this.oDataManager.onReadObjectInfoByURI(sURI);
-			this.getView().setModel(oObjectInfoModel, "oObjectInfoModel");
+			var oTable = this.getView().byId("baseTable");
+			var oObjPageSection = this.getView().byId("baseTableObjPageSection");
+
+			var onQueryLookupSuccess = function (data) {
+				debugger;
+			/*	if (Array.isArray(data) && data.length !== 0) {
+					debugger;
+					oObjPageSection.setTitle(this.getResourceBundle().getText("SearchResultsLabel", [data.length.toString(), oSearchInput]));
+				} */
+				var oBaseTablesModel = new sap.ui.model.json.JSONModel(data);
+				//set the dynamic JSON model to this table.
+				this.getView().setModel(oBaseTablesModel, "oBaseTablesModel");
+				oTable.setEnableBusyIndicator(false);
+			}.bind(this);
+
+			var onQueryLookupError = function (errorText) {
+				MessageToast.show(errorText);
+				oTable.setEnableBusyIndicator(false);
+				//oObjPageSection.setTitle(this.getResourceBundle().getText("SearchResultNotFound"));
+			}.bind(this);
+
+			oTable.setEnableBusyIndicator(true);
+			oObjPageSection.setTitle("");
+
+			var oBaseTablesModel = this.oDataManager.onReadBaseTablesByURI(sURI,onQueryLookupSuccess, onQueryLookupError);
+			this.getView().setModel(oBaseTablesModel, "oBaseTablesModel");
 		},
 		
 		onNavGraphPress: function(){

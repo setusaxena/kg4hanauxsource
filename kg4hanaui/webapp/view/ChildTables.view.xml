@@ -1,13 +1,13 @@
 <mvc:View xmlns:uxap="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m"
 	controllerName="com.sap.kg4hana.kg4hanaui.controller.ChildTables" displayBlock="true">
-	<App id="app">
+	<App id="appChild">
 		<pages>
 			<Page id="childTables" title="{i18n>title}">
 				<content>
 					<!--<Button id="showGraph" text="Graph" press="onNavGraphPress"/>y-->
 					<!--<Button id="showSQL" text="SQL" press="onNavSQLPress"/>-->
 					<!--<Button id="showCDS" text="CDS" press="onNavCDSPress"/>-->
-					<uxap:ObjectPageLayout id="baseTablesObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
+					<uxap:ObjectPageLayout id="childTablesObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
 						<uxap:headerTitle>
 							<uxap:ObjectPageDynamicHeaderTitle>
 								<uxap:heading>
@@ -32,7 +32,7 @@
 							<uxap:ObjectPageSection id="ObjPageSection" showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
 								<uxap:subSections>
 									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
-										<table:Table id="baseTable" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
+										<table:Table id="childTable" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
 											rowSelectionChange="onEntityRowSelectionChange" filter="filterPrice" ariaLabelledBy="title">
 											<table:extension>
 												<OverflowToolbar style="Clear">

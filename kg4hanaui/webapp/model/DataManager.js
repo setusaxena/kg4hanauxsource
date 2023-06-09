@@ -136,8 +136,41 @@ sap.ui.define([
 			//Hardcoded model for testing via some stub data
 			var jsonObjectSQLModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/SQLModel.json"));
 			return jsonObjectSQLModel;
-		}
+		},
+		onReadBaseTablesByURI : function(sURI,successCallback, errorCallback)
+		{
+			return this._fetchBaseTablesByURI(sURI, successCallback, errorCallback);
+		},
+		_fetchBaseTablesByURI : function(sURI,successCallback,errorCallback)
+		{
+			debugger;
 
+			if (sURI) {
+				$.ajax({
+					type: "GET",
+					//url: "/apiEndPoint/entities?searchObject=" + sQuery,
+					url: "/apiEndPoint/cdsView/baseTable?selectedObject="+ sURI,					
+					dataType: 'json',
+					async: true,
+					success: function (data) {
+						debugger;
+						if (Array.isArray(data) && data.length === 0) {
+							errorCallback("NoRecordsFound");
+						}
+						else {
+							var transformedData = this._adapterFetchSearchArtifactsByName(data);
+							successCallback(transformedData);
+						}
+					}.bind(this),
+					error: function (e) {
+						debugger;
+						errorCallback("UnableToReadquery"); //Implement i18n later Please DO NOT put text hrere
+					}
+				});
+			} else {
+				errorCallback("NoInput");//Implement i18n later Please DO NOT put text hrere
+			}
+		}
 	});
 	return DataManager;
 });

@@ -1,38 +1,18 @@
 <mvc:View xmlns:uxap="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table" xmlns="sap.m"
 	controllerName="com.sap.kg4hana.kg4hanaui.controller.BaseTables" displayBlock="true">
-	<App id="app">
+	<App id="appBase">
 		<pages>
-			<Page id="baseTables" title="{i18n>title}">
+			<Page id="baseTables" title="{i18n>titleBaseTables}">
 				<content>
 					<!--<Button id="showGraph" text="Graph" press="onNavGraphPress"/>y-->
 					<!--<Button id="showSQL" text="SQL" press="onNavSQLPress"/>-->
 					<!--<Button id="showCDS" text="CDS" press="onNavCDSPress"/>-->
-					<uxap:ObjectPageLayout id="baseTablesObjectPageLayout" showHeaderContent="true" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
-						<uxap:headerTitle>
-							<uxap:ObjectPageDynamicHeaderTitle>
-								<uxap:heading>
-									<HBox>
-										<Input class="sapUiTinyMarginBottom" width="20rem" id="inpSearchByName" submit="handleSearchByName" placeholder="{i18n>SearchByName}"
-											showSuggestion="true" autocomplete="false" change="handleInputChange"/>
-										<VBox width="1rem"></VBox>
-										<Button text="{i18n>Search}" press="onSearchPress"></Button>
-									</HBox>
-								</uxap:heading>
-							</uxap:ObjectPageDynamicHeaderTitle>
-						</uxap:headerTitle>
-						<uxap:sections>
-							<uxap:ObjectPageSection showTitle="false" visible="{= !!${VisiblityModel>/noEntity} }">
+					<uxap:ObjectPageLayout id="baseTablesObjectPageLayout" showHeaderContent="true" showTitleInHeaderContent="false" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
+					<uxap:sections>
+							<uxap:ObjectPageSection id="baseTableObjPageSection" title="{i18n>titleBaseTables}" showTitle="true" >
 								<uxap:subSections>
 									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
-										<MessagePage showHeader="false" icon="sap-icon://detail-view"
-											text="{= ${VisiblityModel>/noEntity} ? ${i18n>NotFound} : ${i18n>SearchByName} }" description=""/>
-									</uxap:ObjectPageSubSection>
-								</uxap:subSections>
-							</uxap:ObjectPageSection>
-							<uxap:ObjectPageSection id="ObjPageSection" showTitle="true" visible="{= !!${VisiblityModel>/selectedEntity} }" title="{i18n>SearchResultsLabel}">
-								<uxap:subSections>
-									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
-										<table:Table id="baseTable" selectionMode="MultiToggle" rows="{EntityModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
+										<table:Table id="baseTable" selectionMode="MultiToggle" rows="{oBaseTablesModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
 											rowSelectionChange="onEntityRowSelectionChange" filter="filterPrice" ariaLabelledBy="title">
 											<table:extension>
 												<OverflowToolbar style="Clear">
@@ -51,44 +31,22 @@
 												<table:Column width="15rem" filterProperty="Category" defaultFilterOperator="StartsWith">
 													<Label text="Entity Type"/>
 													<table:template>
-														<Text text="{EntityModel>type}" wrapping="false"/>
+														<Text text="{oBaseTablesModel>type}" wrapping="false"/>
 													</table:template>
 												</table:Column>
 												<table:Column width="15rem" filterProperty="Name">
 													<Label text="Entity Name"/>
 													<table:template>
-														<Text text="{EntityModel>name}" wrapping="false"/>
+														<Text text="{oBaseTablesModel>name}" wrapping="false"/>
 													</table:template>
 												</table:Column>
 												<table:Column width="30rem">
 													<Label text="Semantic Keys"/>
 													<table:template>
-														<Text text="{EntityModel>semanticKeys}"/>
+														<Text text="{oBaseTablesModel>semanticKeys}"/>
 													</table:template>
-												</table:Column>
-												<table:Column id="availability" width="11rem" filterProperty="Available" showFilterMenuEntry="false" defaultFilterOperator="EQ"
-													filterType="sap.ui.model.type.Boolean">
-													<Label text="Actions"/>
-													<table:template>
-														<HBox>
-															<Button icon="sap-icon://database" tooltip="{i18n>ShowBaseTables}" type="Emphasized"></Button>
-															<VBox width="5px"/>
-															<Button icon="sap-icon://org-chart" tooltip="{i18n>ShowHierarchy}" press="onNavGraphPress" type="Emphasized"></Button>
-															<VBox width="5px"/>
-															<Button icon="sap-icon://information" tooltip="{i18n>GetInformation}" press="onNavInfoPress" type="Emphasized"></Button>
-															<VBox width="5px"/>
-															<Button icon="sap-icon://feeder-arrow" tooltip="{i18n>GetChildren}"></Button>
-														</HBox>
-													</table:template>
-												</table:Column>
-											</table:columns>
-											<table:footer>
-												<OverflowToolbar id="infobar">
-													<Label text="Selected Views"/>
-													<MultiInput id="multiInputEntity" width="70%" showValueHelp="false"/>
-													<Button text="{i18n>GenerateSQL}" id="generateSQL" press="onNavSQLPress" enabled="false" icon="sap-icon://source-code"></Button>
-												</OverflowToolbar>
-											</table:footer>
+												</table:Column>												
+											</table:columns>											
 										</table:Table>
 									</uxap:ObjectPageSubSection>
 								</uxap:subSections>

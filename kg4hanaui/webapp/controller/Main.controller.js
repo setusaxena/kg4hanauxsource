@@ -41,21 +41,21 @@ sap.ui.define([
 
 		onNavSQLPress: function (oEvent) {
 			//getRouter as defined in BaseController and then navTo route;
-			//	var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
-			//	var objRowURI = formatter.shortenURI(URI);
+			//var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+			//var objRowURI = formatter.shortenURI(URI);
 
 			this.getRouter().navTo("sql", {
 				URI: URI
 			});
 		},
-		 
+
 		onNavBaseTablesPress: function (oEvent) {
 			//getRouter as defined in BaseController and then navTo route;
-			//	var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
-			//	var objRowURI = formatter.shortenURI(URI);
-
+				var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+				var objRowURI = formatter.shortenURI(objRow.URI);
+			debugger;
 			this.getRouter().navTo("baseTables", {
-				URI: URI
+				URI: objRowURI
 			});
 		},
 		onNavChildTablesPress: function (oEvent) {
@@ -67,7 +67,7 @@ sap.ui.define([
 				URI: URI
 			});
 		},
-		
+
 		onSearchPress: function (oEvent) {
 
 			var oSearchInput = this.getView().byId("inpSearchByName").getValue();
