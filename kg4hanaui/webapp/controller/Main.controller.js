@@ -41,11 +41,11 @@ sap.ui.define([
 
 		onNavSQLPress: function (oEvent) {
 			//getRouter as defined in BaseController and then navTo route;
-			//var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
-			//var objRowURI = formatter.shortenURI(URI);
+			var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+			var objRowURI = formatter.shortenURI(objRow.URI);
 
 			this.getRouter().navTo("sql", {
-				URI: URI
+				URI: objRowURI
 			});
 		},
 
@@ -53,18 +53,16 @@ sap.ui.define([
 			//getRouter as defined in BaseController and then navTo route;
 				var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
 				var objRowURI = formatter.shortenURI(objRow.URI);
-			debugger;
 			this.getRouter().navTo("baseTables", {
 				URI: objRowURI
 			});
 		},
 		onNavChildTablesPress: function (oEvent) {
 			//getRouter as defined in BaseController and then navTo route;
-			//	var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
-			//	var objRowURI = formatter.shortenURI(URI);
-
-			this.getRouter().navTo("toChildTables", {
-				URI: URI
+				var objRow = oEvent.getSource().getParent().getParent().getRowBindingContext().getObject();
+				var objRowURI = formatter.shortenURI(objRow.URI);
+			this.getRouter().navTo("childTables", {
+				URI: objRowURI
 			});
 		},
 
