@@ -3,8 +3,8 @@
   "authenticationMethod": "route",
   "routes": [
     {
-      "source": "^/apiEndPoint/(.*)$",
-      "target": "/$1",
+      "source": "^/entities/(.*)$",
+      "target": "/entities/$1",
       "destination": "POC_KG4HANA",
       "authenticationType": "none",
       "csrfProtection": false

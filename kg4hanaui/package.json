@@ -31,6 +31,7 @@
         "build:mta": "rimraf resources mta_archives && mbt build",
         "undeploy": "cf undeploy comsapkg4hanakg4hanaui --delete-services --delete-service-keys --delete-service-brokers"
     },
+    "sapux": true,
     "sapuxLayer": "CUSTOMER_BASE",
     "ui5": {
         "dependencies": [

@@ -10,16 +10,15 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
-        backend:
-          - path: /apiEndPoint
-            destination: POC_KG4HANA
-            url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
-            pathPrefix: /
         ui5:
           path:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+        backend:
+          - path: /entities
+            url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
+            destination: POC_KG4HANA
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

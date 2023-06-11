@@ -24,7 +24,7 @@ sap.ui.define([
 			if (sQuery) {
 				$.ajax({
 					type: "GET",
-					url: "/apiEndPoint/entities?searchObject=" + sQuery,
+					url: "/entities/?searchObject=" + sQuery,
 					dataType: 'json',
 					async: true,
 					success: function (data) {
