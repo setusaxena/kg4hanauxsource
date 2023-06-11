@@ -19,8 +19,6 @@ sap.ui.define([
 		},
 
 		_fetchSearchArtifactsByName: function (sQuery, successCallback, errorCallback) {
-			debugger;
-
 			if (sQuery) {
 				$.ajax({
 					type: "GET",
@@ -90,22 +88,66 @@ sap.ui.define([
 		/**
 		 *	Start of Search CDS Arctefacts by Query / Name
 		 **/
-		onReadCDSStackByURI: function (sURI, iMaxDepth, bWithAssociation) {
-			return this._fetchCDSGraphByURI(sURI, iMaxDepth, bWithAssociation);
+		onReadCDSStackByURI: function (sURI, iMaxDepth, bWithAssociation, successCallback, errorCallback) {
+			return this._fetchCDSGraphByURI(sURI, iMaxDepth, bWithAssociation, successCallback, errorCallback);
 		},
 
-		_fetchCDSGraphByURI: function (sURI, iMaxDepth, bWithAssociation) {
-			//TODO API Call to fetch graphInfo relatedto CDS/ABAP by URI goes here
-			//Hardcoded model for testing via some stub data
-			var jsonGraphModel = new sap.ui.model.json.JSONModel();
-			jsonGraphModel.setSizeLimit(655360);
-			//	jsonGraphModel.loadData(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/OUTPUT_cds_view_hierarchy.json"));
-			//	jsonGraphModel.loadData(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/GraphModel.json"));
-			jsonGraphModel.loadData(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/ComplexGraphModel.json"));
-			//jsonGraphModel.loadData(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/DemoGraphModel.json"));	
-			//var jsonGraphModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/ComplexGraphModel.json"));
-			return jsonGraphModel;
+		_fetchCDSGraphByURI: function (sURI, iMaxDepth, bWithAssociation, successCallback, errorCallback) {
+			sURI = "http://schema.sap.com/CDSView/I_PURCHASEORDERITEMAPI01&maxDepth=3&withAssoc=true";
+			if (sURI) {
+				$.ajax({
+					type: "GET",
+					url: "/cdsView/hierarchy/?selectedObject=" + sURI,
+					dataType: 'json',
+					async: true,
+					success: function (data) {
+						debugger;
+						if (Array.isArray(data) && data.length === 0) {
+							errorCallback("NoRecordsFound");
+						}
+						else {
+							var transformedData = this._adaptFetchCDSGraphByURI(data);
+							successCallback(transformedData);
+						}
+					}.bind(this),
+					error: function (e) {
+						debugger;
+						errorCallback("UnableToReadquery"); //Implement i18n later Please DO NOT put text hrere
+					}
+				});
+			} else {
+				errorCallback("NoInput");//Implement i18n later Please DO NOT put text hrere
+			}
 		},
+
+		_adaptFetchCDSGraphByURI: function (data) {
+			debugger;
+			/*for each of the reocord do the following
+			1. Replace the key with URI? fix this later after data works with key itself
+			2. construct the to and from info 
+			*/
+			var nodesArray = [];
+			var linesArray = [];
+			if (data && Array.isArray(data) && data.length >= 0) {
+				data.forEach(function (graphNode) {
+					graphNode.URI = graphNode.key; //TODO remove URI with key
+					nodesArray.push(graphNode);
+					if (graphNode.keyToParent !== null) { //only do it for non root nodes
+						var lineInfo = {
+							"to": graphNode.key,
+							"from": graphNode.keyToParent
+						};
+						linesArray.push(lineInfo);
+					}
+				});
+			}
+			var outputGraphData = {
+				nodes: nodesArray,
+				lines: linesArray
+			}
+			return outputGraphData;
+		},
+
 		/**
 		 *	End of Search CDS Arctefacts by Query / Name
 		 **/
@@ -137,19 +179,17 @@ sap.ui.define([
 			var jsonObjectSQLModel = new sap.ui.model.json.JSONModel(sap.ui.require.toUrl("com/sap/kg4hana/kg4hanaui/model/SQLModel.json"));
 			return jsonObjectSQLModel;
 		},
-		onReadBaseTablesByURI : function(sURI,successCallback, errorCallback)
-		{
+		onReadBaseTablesByURI: function (sURI, successCallback, errorCallback) {
 			return this._fetchBaseTablesByURI(sURI, successCallback, errorCallback);
 		},
-		_fetchBaseTablesByURI : function(sURI,successCallback,errorCallback)
-		{
+		_fetchBaseTablesByURI: function (sURI, successCallback, errorCallback) {
 			debugger;
 
 			if (sURI) {
 				$.ajax({
 					type: "GET",
-					//url: "/apiEndPoint/entities?searchObject=" + sQuery,
-					url: "/apiEndPoint/cdsView/baseTable?selectedObject="+ sURI,					
+					//url: "/entities?searchObject=" + sQuery,
+					url: "/cdsView/baseTable?selectedObject=" + sURI,
 					dataType: 'json',
 					async: true,
 					success: function (data) {

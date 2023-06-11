@@ -71,6 +71,11 @@ resources:
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Name: POC_KG4HANA
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
           existing_destinations_policy: update
       version: 1.0.0
     service: destination

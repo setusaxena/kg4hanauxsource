@@ -16,6 +16,9 @@ server:
             - /test-resources
           url: https://ui5.sap.com
         backend:
+          - path: /cdsView
+            url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
+            destination: POC_KG4HANA
           - path: /entities
             url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
             destination: POC_KG4HANA

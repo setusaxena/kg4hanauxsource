@@ -10,6 +10,13 @@
       "csrfProtection": false
     },
     {
+      "source": "^/cdsView/(.*)$",
+      "target": "/cdsView/$1",
+      "destination": "POC_KG4HANA",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
       "source": "^/resources/(.*)$",
       "target": "/resources/$1",
       "authenticationType": "none",

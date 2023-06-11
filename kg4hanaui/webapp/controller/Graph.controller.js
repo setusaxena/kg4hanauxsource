@@ -5,8 +5,9 @@ sap.ui.define([
 	"sap/suite/ui/commons/networkgraph/Node",
 	"sap/m/library",
 	"sap/ui/core/Fragment",
-	"sap/ui/model/json/JSONModel"
-], function (BaseController, formatter, ActionButton, Node, mobileLibrary, Fragment, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageToast"
+], function (BaseController, formatter, ActionButton, Node, mobileLibrary, Fragment, JSONModel, MessageToast) {
 	"use strict";
 	return BaseController.extend("com.sap.kg4hana.kg4hanaui.controller.Graph", {
 		formatter: formatter,
@@ -21,12 +22,27 @@ sap.ui.define([
 
 		_onObjectMatched: function (oEvent) {
 			var sURI = oEvent.getParameter("arguments").URI;
-			this._intializeGraphtPage(sURI);
+			this._intializeGraphtPage(sURI, 3, true);
 		},
 
 		_intializeGraphtPage: function (sURI, iMaxDepth, bWithAssociation) {
-			var oGraphModel = this.oDataManager.onReadCDSStackByURI(sURI, iMaxDepth, bWithAssociation);
-			this.getView().setModel(oGraphModel);
+
+			var onReadCDSStackSuccess = function (data) {
+				debugger;
+				var oGraphModel = new sap.ui.model.json.JSONModel(data);
+				oGraphModel.setSizeLimit(655360);
+				//set the dynamic JSON model to this table.
+				this.getView().setModel(oGraphModel);
+			}.bind(this);
+
+			var onReadCDSStackError = function (errorText) {
+				MessageToast.show(errorText);
+				oTable.setEnableBusyIndicator(false);
+				oObjPageSection.setTitle(this.getResourceBundle().getText("SearchResultNotFound"));
+			}.bind(this);
+
+			this.oDataManager.onReadCDSStackByURI(sURI, iMaxDepth, bWithAssociation, onReadCDSStackSuccess, onReadCDSStackError);
+
 			//start with the main key URI for the page
 			var STARTING_PROFILE = sURI;
 
@@ -123,8 +139,8 @@ sap.ui.define([
 								icon: "sap-icon://arrow-top",
 								press: function () {
 									var aSuperVisors = oNode.getCustomData().filter(function (oData) {
-											return oData.getKey() === "supervisor";
-										}),
+										return oData.getKey() === "supervisor";
+									}),
 										sSupervisor = aSuperVisors.length > 0 && aSuperVisors[0].getValue();
 
 									this._loadMore(sSupervisor);
@@ -293,20 +309,20 @@ sap.ui.define([
 				}.bind(this), 0);
 			}
 		},
-		
+
 		_getTitleForEntity: function (entityType) {
 			switch (entityType) {
-			case "CDSView":
-				 return this.getResourceBundle().getText("CDSView");
-				break;
-			case "ABAPTable":
-				return this.getResourceBundle().getText("ABAPTable");
-				break;
-			default:
-				return "Unkown Enity";
+				case "CDSView":
+					return this.getResourceBundle().getText("CDSView");
+					break;
+				case "ABAPTable":
+					return this.getResourceBundle().getText("ABAPTable");
+					break;
+				default:
+					return "Unkown Enity";
 			}
 		},
-		
+
 		_loadMore: function (sName) {
 			this._graph.deselect();
 			this._mExplored.push(sName);

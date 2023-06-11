@@ -1,0 +1,28 @@
+{
+    "HTML5Runtime_enabled": true,
+    "version": "1.0.0",
+    "init_data": {
+      "instance": {
+        "existing_destinations_policy": "update",
+        "destinations": [
+          {
+            "Name": "POC_KG4HANA",
+            "Description": "Backend Destination",
+            "Authentication": "NoAuthentication",
+            "ProxyType": "Internet",
+            "Type": "HTTP",
+            "URL": "https://sparql-api-ui.cfapps.eu10.hana.ondemand.com",
+            "HTML5.DynamicDestination": true
+          },
+          {
+            "Name": "ui5",
+            "Authentication": "NoAuthentication",
+            "ProxyType": "Internet",
+            "Type": "HTTP",
+            "URL": "https://ui5.sap.com",
+            "HTML5.DynamicDestination": true
+          }
+        ]
+      }
+    }
+  }

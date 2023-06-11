@@ -30,9 +30,17 @@ server:
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
+          - path: /cdsView
+            url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
+            destination: POC_KG4HANA
           - path: /entities
             url: https://sparql-api-ui.cfapps.eu10.hana.ondemand.com
             destination: POC_KG4HANA
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
