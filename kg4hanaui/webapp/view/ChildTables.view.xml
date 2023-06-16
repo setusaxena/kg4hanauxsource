@@ -2,14 +2,14 @@
 	controllerName="com.sap.kg4hana.kg4hanaui.controller.BaseTables" displayBlock="true">
 	<App id="appBase">
 		<pages>
-			<Page id="childTables" title="{i18n>titleBaseTables}">
+			<Page id="childTables" title="{i18n>titleChildTables}">
 				<content>
 					<!--<Button id="showGraph" text="Graph" press="onNavGraphPress"/>y-->
 					<!--<Button id="showSQL" text="SQL" press="onNavSQLPress"/>-->
 					<!--<Button id="showCDS" text="CDS" press="onNavCDSPress"/>-->
 					<uxap:ObjectPageLayout id="childTablesObjectPageLayout" showHeaderContent="true" showTitleInHeaderContent="false" toggleHeaderOnTitleClick="true" upperCaseAnchorBar="false">
 					<uxap:sections>
-							<uxap:ObjectPageSection id="childTableObjPageSection" title="{i18n>titleBaseTables}" showTitle="true" >
+							<uxap:ObjectPageSection id="childTableObjPageSection" title="{i18n>titleChildTables}" showTitle="true" >
 								<uxap:subSections>
 									<uxap:ObjectPageSubSection class="sapUxAPObjectPageSubSectionFitContainer">
 										<table:Table id="childTable" selectionMode="MultiToggle" rows="{oChildTablesModel>/}" visibleRowCount="7" enableCellFilter="{ui>/cellFilterOn}"
